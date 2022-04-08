@@ -1,0 +1,13 @@
+you need to install these dependecies when you have access to a terminal
+
+npm i 
+draft-js
+react-draft-wysiwyg   (what you see is what you get)
+draftjs-to-html
+html-to-draftjs
+
+also do
+
+npm i react-html-parser
+
+npm i react-truncate striptags
