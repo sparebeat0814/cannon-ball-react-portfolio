@@ -17,8 +17,7 @@ export default class PortfolioDetail extends Component {
   getPortfolioItem() {
     axios
       .get(
-        `https://cannonball.devcamp.space/portfolio/portfolio_items/${
-          this.props.match.params.slug
+        `https://cannonball.devcamp.space/portfolio/portfolio_items/${this.props.match.params.slug
         }`,
         { withCredentials: true }
       )
@@ -58,7 +57,7 @@ export default class PortfolioDetail extends Component {
       <div className="portfolio-detail-wrapper">
         <div className="banner" style={bannerStyles}>
           <img src={logo_url} style={logoStyles} />
-          
+
         </div>
         <div className="portfolio-detail-description-wrapper">
           <div className="description">{description}</div>

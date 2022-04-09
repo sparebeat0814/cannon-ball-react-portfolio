@@ -82,7 +82,11 @@ export default class App extends Component {
 
   authorizedPages() {
     return [
-    <Route key="portfolio-manager" path="/portfolio-manager" component={PortfolioManager} />
+      <Route
+        key="portfolio-manager"
+        path="/portfolio-manager"
+        component={PortfolioManager}
+      />
     ];
   }
 
@@ -91,54 +95,54 @@ export default class App extends Component {
       <div className="container">
         <Router>
           <div>
-            <NavigationContainer 
-            loggedInStatus={this.state.loggedInStatus} 
-            handleSuccessfulLogout={this.handleSuccessfulLogout}
+            <NavigationContainer
+              loggedInStatus={this.state.loggedInStatus}
+              handleSuccessfulLogout={this.handleSuccessfulLogout}
             />
 
 
             <Switch>
               <Route exact path="/" component={Home} />
 
-               <Route
+              <Route
                 path="/auth"
                 render={props => (
                   <Auth
                     {...props}
                     handleSuccessfulLogin={this.handleSuccessfulLogin}
                     handleUnsuccessfulLogin={this.handleUnsuccessfulLogin}
-                  /> 
-                
-              )} />
+                  />
 
-               <Route path="/about-me" component={About} />
+                )} />
+
+              <Route path="/about-me" component={About} />
               <Route path="/contact" component={Contact} />
 
 
-              <Route path="/blog" 
-              // always use parens instead of curlys with this render func right here
-              // this is also where we make the auth for creating posts.
-              render={props => (
-                <Blog {...props} loggedInStatus={this.state.loggedInStatus} />
-              )
-              }
-              /> 
+              <Route path="/blog"
+                // always use parens instead of curlys with this render func right here
+                // this is also where we make the auth for creating posts.
+                render={props => (
+                  <Blog {...props} loggedInStatus={this.state.loggedInStatus} />
+                )
+                }
+              />
 
 
               <Route
-               path="/b/:slug"
-               render={props => (
-                 <BlogDetail {...props} loggedInStatus={this.state.loggedInStatus} />
-               )}
-               /> 
-               {this.state.loggedInStatus === "LOGGED_IN" ? (
+                path="/b/:slug"
+                render={props => (
+                  <BlogDetail {...props} loggedInStatus={this.state.loggedInStatus} />
+                )}
+              />
+              {this.state.loggedInStatus === "LOGGED_IN" ? (
                 this.authorizedPages()
               ) : null} *
-               <Route
+              <Route
                 exact
                 path="/portfolio/:slug"
                 component={PortfolioDetail}
-              /> 
+              />
               <Route component={NoMatch} />
             </Switch>
           </div>

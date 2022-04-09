@@ -28,7 +28,7 @@ export default class BlogDetail extends Component {
   }
 
   handleFeaturedImageDelete() {
-    this.setState ({
+    this.setState({
       blogItem: {
         featured_image_url: ""
       }
@@ -38,15 +38,14 @@ export default class BlogDetail extends Component {
   handleEditClick() {
     console.log("handle edit clicked");
     if (this.props.loggedInStatus === "LOGGED_IN") {
-    this.setState({ editMode: true });
+      this.setState({ editMode: true });
     }
   }
 
   getBlogItem() {
     axios
       .get(
-        `https://cannonball.devcamp.space/portfolio/portfolio_blogs/${
-          this.state.currentId
+        `https://cannonball.devcamp.space/portfolio/portfolio_blogs/${this.state.currentId
         }`
       )
       .then(response => {
@@ -74,11 +73,11 @@ export default class BlogDetail extends Component {
     const contentManager = () => {
       if (this.state.editMode) {
         return (
-          <BlogForm 
-          handleFeaturedImageDelete={this.handleFeaturedImageDelete}
-          handleUpdateFormSubmission={this.handleUpdateFormSubmission}
-          editMode={this.state.editMode} 
-          blog={this.state.blogItem} />
+          <BlogForm
+            handleFeaturedImageDelete={this.handleFeaturedImageDelete}
+            handleUpdateFormSubmission={this.handleUpdateFormSubmission}
+            editMode={this.state.editMode}
+            blog={this.state.blogItem} />
         );
       } else {
         return (

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import BlogItem from "../blog/blog-item";
@@ -90,15 +89,13 @@ class Blog extends Component {
 
     axios
       .get(
-        `https://cannonball.devcamp.space/portfolio/portfolio_blogs?page=${
-          this.state.currentPage
+        `https://cannonball.devcamp.space/portfolio/portfolio_blogs?page=${this.state.currentPage
         }`,
         {
           withCredentials: true
         }
       )
       .then(response => {
-        console.log("gettting", response.data);
         this.setState({
           blogItems: this.state.blogItems.concat(response.data.portfolio_blogs),
           totalCount: response.data.meta.total_records,
@@ -124,7 +121,7 @@ class Blog extends Component {
         return (
           <div key={blogItem.id} className="admin-blog-wrapper">
             <BlogItem blogItem={blogItem} />
-            <a onClick={() => this.handleDeleteClick(blogItem)}>
+            <a className="trash-can" onClick={() => this.handleDeleteClick(blogItem)}>
               <FontAwesomeIcon icon="trash" />
             </a>
           </div>
