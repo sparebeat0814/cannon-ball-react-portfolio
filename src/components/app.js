@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
-import { FortAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 import NavigationContainer from "./navigation/navigation-container";
@@ -14,7 +14,7 @@ import PortfolioManager from "./pages/portfolio-manager"
 import PortfolioDetail from "./portfolio/portfolio-detail";
 import Auth from "./pages/auth";
 import NoMatch from "./pages/no-match";
-import Icons from "../helpers/icons"
+import { Icons } from "../helpers/icons"
 
 
 export default class App extends Component {
@@ -125,7 +125,12 @@ export default class App extends Component {
               /> 
 
 
-              <Route path="/b/:slug" component={BlogDetail} /> 
+              <Route
+               path="/b/:slug"
+               render={props => (
+                 <BlogDetail {...props} loggedInStatus={this.state.loggedInStatus} />
+               )}
+               /> 
                {this.state.loggedInStatus === "LOGGED_IN" ? (
                 this.authorizedPages()
               ) : null} *
